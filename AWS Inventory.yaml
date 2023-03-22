@@ -1,14 +1,20 @@
 ---
- - name: This play is used to fetch instances info
-   hosts: All
-   connection: local
-   gather_facts: false
-   tasks:
-   - name: Info about ec2 using ec2_instance_facts
-     ec2_instance_facts:
-      region: ap-south-1
-   
-   - name: Displyaing the info of ec2 instances
-     template:
-       src: generate_csv.j2
-       dest: ec2_instance_info.csv
+- hosts: localhost
+  gather_facts: false
+  vars:
+    aws_access_key: "your-aws-access-key"
+    aws_secret_key: "your-aws-secret-key"
+    aws_region: "ap-south-1"
+  tasks:
+    - name: Fetch EC2 instances
+      ec2_instance_info:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        region: "ap-south-1"
+      register: ec2_info
+
+    - name: Convert to Excel format
+      community.general.json2xlsx:
+        data: "{{ ec2_info.instances }}"
+        sheet_name: "EC2 Instances"
+        path: "/tmp/tower/file.xlsx"
