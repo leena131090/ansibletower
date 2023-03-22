@@ -1,6 +1,6 @@
 ---
 - name: configure a simple apache server
-  hosts: DB
+  hosts: All
   tasks:
     - name: install httpd
       yum:
