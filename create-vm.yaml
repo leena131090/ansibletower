@@ -1,6 +1,6 @@
 ---
 - name: Ansible Play
-  hosts: localhost
+  hosts: 
   tasks:
   - name:   launching AWS instance using Ansible
     ec2:
