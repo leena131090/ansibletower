@@ -6,7 +6,7 @@
    tasks:
    - name: stopping ec2 instance
      ec2:
-      instance_ids: 
+      instance_id: 
       region: ap-south-1
       state: stopped
       wait: yes
