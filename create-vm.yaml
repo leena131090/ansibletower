@@ -2,7 +2,7 @@
 - name: Ansible Play
   hosts: localhost
   connection: local
-  gether_facts: False
+  gather_facts: False
   tasks:
   - name:   launching AWS instance using Ansible
     ec2:
