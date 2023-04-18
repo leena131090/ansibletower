@@ -3,11 +3,11 @@
   hosts: localhost
   tasks:
   - name:   launching AWS instance using Ansible
-
     ec2:
-      key_name: mumbai
+      key_name: ansiblekeypair
       region: ap-south-1
       instance_type: t2.micro
       image: ami-0b07577a2fb10021f
-      instance_tags:
-        Name: Demo_server
+      vpc_subnet_id: subnet-0939ec76437b3248d
+      count: 1
+      
