@@ -1,20 +1,17 @@
 ---
-- hosts: localhost
-  gather_facts: false
-  vars:
-    aws_access_key: "your-aws-access-key"
-    aws_secret_key: "your-aws-secret-key"
-    aws_region: "ap-south-1"
-  tasks:
-    - name: Fetch EC2 instances
-      ec2_instance_info:
-        aws_access_key: "{{ aws_access_key }}"
-        aws_secret_key: "{{ aws_secret_key }}"
-        region: "ap-south-1"
-      register: ec2_info
+- name: Generate AWS inventory
+  hosts: all
+  gather_facts: False
 
-    - name: Convert to Excel format
-      community.general.json2xlsx:
-        data: "{{ ec2_info.instances }}"
-        sheet_name: "EC2 Instances"
-        path: "/tmp/tower/file.xlsx"
+
+  tasks:
+    - name: Generate inventory
+      amazon.aws.ec2_instance_info:
+        filters:
+          "tag:Name": "*"
+      register: ec2_instances
+
+    - name: Save output to CSV
+      copy:
+        content: "{{ ec2_instances.instances | to_nice_json }}"
+        dest: inventory.csv
