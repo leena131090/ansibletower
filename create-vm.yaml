@@ -1,6 +1,6 @@
 ---
 - name: Ansible Play
-  hosts: DB
+  hosts: 65.1.128.129
   tasks:
   - name:   launching AWS instance using Ansible
     ec2:
