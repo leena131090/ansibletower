@@ -17,10 +17,3 @@
       copy:
         content: "Sample Apache Server."
         dest: /var/www/html/index.html
-
-    - name: configure apache in firewalld
-      firewalld:
-        service: http
-        immediate: true
-        permanent: true
-        state: enabled
