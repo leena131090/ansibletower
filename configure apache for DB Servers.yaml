@@ -1,6 +1,6 @@
 ---
 - name: configure a simple apache server
-  hosts: all
+  hosts: ec2-13-233-142-238.ap-south-1.compute.amazonaws.com
   tasks:
     - name: install httpd
       yum:
