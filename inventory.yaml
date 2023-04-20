@@ -1,0 +1,14 @@
+---
+- name: inventory
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: Info for EC2 instances
+    ec2_instance_info:
+      region: ap-south-1
+    register: out
+  - name: Display the info for EC2
+    template:
+      src: generate_csv2.j2
+      dest: ec2_instance_info.csv

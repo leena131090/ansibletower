@@ -1,0 +1,4 @@
+Instance_Id,Private_IP,Instance_Type,OS,Subnet_Id,VPC_Id
+{% for instance in out.instances %}
+{{ instance.instance_id }},{{ instance.private_ip_address }},{{ instance.instance_type }},{{ instance.platform_details }},{{ instance.subnet_id }},{{ instance.vpc_id }}
+{% endfor %}
