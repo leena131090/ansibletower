@@ -1,12 +1,16 @@
 ---
- - name: This play is used to start ec2 instance
-   hosts: localhost
-   connection: local
-   gather_facts: fasle
-   tasks:
-   - name: starting ec2 instance
-     ec2:
-      instance_ids: i-006dafad18394c3cb
-      region: us-east-1
-      state: running
-      wait: yes
+- name: Start EC2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Gather facts about EC2 instance
+      ec2_instance_info: 
+        instance_ids: "{{ instance_ids }}"
+        region: ap-south-1
+      register: ec2_info
+    - name: Stop EC2 instance
+      ec2:
+        instance_ids: "{{ instance_ids }}"
+        state: running
+        region: ap-south-1
