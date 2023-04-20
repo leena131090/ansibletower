@@ -14,9 +14,9 @@
     template:
       src: generate_csv2.j2
       dest: ec2_instance_info.csv
-   - name: Update permission for file
-     file:
-      path: ec2_instance_info.csv
+  - name: Update permission for file
+    file:
+      src: ec2_instance_info.csv
       mode: '0777'
   - name: Download CSV file
     win_copy:
