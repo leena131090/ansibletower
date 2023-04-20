@@ -3,8 +3,6 @@
   hosts: localhost
   connection: local
   gather_facts: False
-  become: true
-  become_method: sudo
   tasks:
   - name: Info for EC2 instances
     ec2_instance_info:
@@ -14,9 +12,11 @@
     template:
       src: generate_csv2.j2
       dest: ec2_instance_info.csv
-  - name: Update permission for file
+  - name: Set permissions on a file
+    become: true
+    become_user: root
     file:
-      src: ec2_instance_info.csv
+      path: ec2_instance_info.csv
       mode: '0777'
   - name: Download CSV file
     win_copy:
