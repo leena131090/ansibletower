@@ -22,8 +22,7 @@
       dest: C:\Users\leena\Desktop\Inventory\ec2_instance_info.csv
       remote_src: yes
       force: yes
-    become: yes
-    become_method: runas
-    become_user: "{{ ansible_become_user }}"
-    vars:
-      ansible_ssh_pipelining: true
+      owner: leena
+      group: leena
+      mode: '0644'
+    delegate_to: localhost
