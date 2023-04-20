@@ -11,6 +11,6 @@
       register: ec2_info
     - name: Stop EC2 instance
       ec2:
-        instance_ids: "{{ ec2_info.instances[0].id }}"
+        instance_ids: i-0815b044af392ab05
         state: stopped
         region: ap-south-1
