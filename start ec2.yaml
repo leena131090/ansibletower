@@ -7,10 +7,8 @@
     - name: Gather facts about EC2 instance
       ec2_instance_info: 
         instance_ids: "{{ instance_ids }}"
-        region: ap-south-1
       register: ec2_info
     - name: Stop EC2 instance
       ec2:
         instance_ids: "{{ instance_ids }}"
         state: running
-        region: ap-south-1
