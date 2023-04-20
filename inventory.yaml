@@ -1,8 +1,6 @@
 ---
 - name: inventory
-  hosts: localhost
-  connection: local
-  gather_facts: false
+  hosts: 3.110.140.151
   tasks:
   - name: Info for EC2 instances
     ec2_instance_info:
