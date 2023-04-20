@@ -13,7 +13,9 @@
       src: generate_csv2.j2
       dest: /tmp/ec2_instance_info.csv
   - name: Download CSV file
-    win_copy:
+    winrm_copy:
       src: /tmp/ec2_instance_info.csv
       dest: C:\Users\leena\Desktop\Inventory\ec2_instance_info.csv
-     
+      winrm_username: "administrator"
+      winrm_password: "250683"
+      winrm_transport: "ntlm"
