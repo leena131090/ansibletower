@@ -3,6 +3,8 @@
   hosts: localhost
   connection: local
   gather_facts: False
+  become: true
+  become_method: sudo
   tasks:
   - name: Info for EC2 instances
     ec2_instance_info:
@@ -11,11 +13,12 @@
   - name: Display the info for EC2
     template:
       src: generate_csv2.j2
-      dest: /tmp/ec2_instance_info.csv
+      dest: ec2_instance_info.csv
+   - name: Update permission for file
+     file:
+      path: ec2_instance_info.csv
+      mode: '0777'
   - name: Download CSV file
-    winrm_copy:
-      src: /tmp/ec2_instance_info.csv
+    win_copy:
+      src: ec2_instance_info.csv
       dest: C:\Users\leena\Desktop\Inventory\ec2_instance_info.csv
-      winrm_username: "administrator"
-      winrm_password: "250683"
-      winrm_transport: "ntlm"
