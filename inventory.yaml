@@ -13,6 +13,6 @@
       src: generate_csv2.j2
       dest: ec2_instance_info.csv
   - name: Download CSV file
-     win_copy:
-       src: ec2_instance_info.csv
-       dest: C:\Users\leena\Desktop\Inventory\ec2_instance_info.csv
+    win_copy:
+      src: ec2_instance_info.csv
+      dest: C:\Users\leena\Desktop\Inventory\ec2_instance_info.csv
