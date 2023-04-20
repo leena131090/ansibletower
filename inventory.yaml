@@ -14,7 +14,7 @@
       dest: ec2_instance_info.csv
   - name: Download CSV file
     fetch:
-      src: /tmp/ec2_instance_info.csv
+      src: ec2_instance_info.csv
       dest: C:\Users\leena\Desktop\Inventory\ec2_instance_info.csv
       flat: yes
       fail_on_missing: yes
