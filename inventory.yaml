@@ -12,11 +12,7 @@
     template:
       src: generate_csv2.j2
       dest: ec2_instance_info.csv
-  - name: Save a copy of file to a different location
-    copy:
-      src: ec2_instance_info.csv
-      dest: /ec2_instance_info.csv      
-   - name: Download CSV file
+  - name: Download CSV file
      win_copy:
        src: ec2_instance_info.csv
        dest: C:\Users\leena\Desktop\Inventory\ec2_instance_info.csv
