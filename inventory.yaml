@@ -3,6 +3,10 @@
   hosts: localhost
   connection: local
   gather_facts: False
+  vars:
+    ansible_become: yes
+    ansible_become_method: sudo
+    ansible_become_user: root
   tasks:
   - name: Info for EC2 instances
     ec2_instance_info:
@@ -15,7 +19,11 @@
   - name: Download CSV file
     win_copy:
       src: ec2_instance_info.csv
-      dest: C:\Users\leena\Desktop\Inventory\ec2_instance_info.csv
-    become: true
+      dest: "C:\Users\leena\Desktop\Inventory\ec2_instance_info.csv"
+      remote_src: yes
+      force: yes
+    become: yes
+    become_method: runas
+    become_user: "{{ ansible_become_user }}"
     vars:
       ansible_ssh_pipelining: true
