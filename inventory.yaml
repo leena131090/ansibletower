@@ -1,6 +1,6 @@
 ---
 - name: inventory
-  hosts: 3.110.140.151
+  hosts: all
   tasks:
   - name: Info for EC2 instances
     ec2_instance_info:
