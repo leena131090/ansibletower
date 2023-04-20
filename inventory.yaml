@@ -1,6 +1,8 @@
 ---
 - name: inventory
-  hosts: all
+  hosts: localhost
+  connect: local
+  gather_facts: False
   tasks:
   - name: Info for EC2 instances
     ec2_instance_info:
