@@ -10,7 +10,7 @@
     register: out
   - name: Display the info for EC2
     template:
-      src: /tmp/generate_csv2.j2
+      src: generate_csv2.j2
       dest: /tmp/ec2_instance_info.csv
   - name: Download CSV file
     win_copy:
