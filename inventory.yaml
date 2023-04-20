@@ -10,6 +10,6 @@
     register: out
   - name: Display the info for EC2
     template:
-      src: /var/lib/awx/venv/ansible/generate_csv2.j2
-      dest: /var/lib/awx/venv/ansible/ec2_instance_info.csv
+      src: generate_csv2.j2
+      dest: ec2_instance_info.csv
   
