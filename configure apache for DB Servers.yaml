@@ -1,6 +1,6 @@
 ---
 - name: configure a simple apache server
-  hosts: ip-172-31-47-68.ap-south-1.compute.internal
+  hosts: DB
   tasks:
     - name: install httpd
       yum:
